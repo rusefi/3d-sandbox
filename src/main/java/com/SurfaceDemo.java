@@ -15,6 +15,12 @@ import org.jzy3d.plot3d.primitives.Shape;
 import org.jzy3d.plot3d.rendering.canvas.Quality;
 
 public class SurfaceDemo extends AbstractAnalysis {
+    AWTChartComponentFactory f = new AWTChartComponentFactory();
+
+    public SurfaceDemo() {
+        super(/* weird it works with null?!*/null);
+    }
+
     public static void main(String[] args) throws Exception {
         AnalysisLauncher.open(new SurfaceDemo());
     }
@@ -40,7 +46,7 @@ public class SurfaceDemo extends AbstractAnalysis {
         surface.setWireframeDisplayed(false);
 
         // Create a chart
-        chart = AWTChartComponentFactory.chart(Quality.Advanced, getCanvasType());
+        chart = f.newChart(Quality.Advanced, getCanvasType());
         chart.getScene().getGraph().add(surface);
     }
 }
